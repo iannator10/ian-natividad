@@ -1,8 +1,7 @@
+@import "mixins";
+
 html,
 body {
-    background-color: #1a1a1a;
-    height: 100%;
     margin: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    padding: 0;
 }

@@ -23,13 +23,12 @@ const contactSchema = new mongoose.Schema({
 
 const contactModel = mongoose.model("contactModel", contactSchema);
 
-mongoose.connect('mongodb+srv://iannator10:Passwordniian@@@ign-web-contact-7ixha.gcp.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://ign123:ign123@ign-web-app-pqilq.gcp.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
 app.get('/', (req, res) => res.render('index'));
-app.get('/contact', (req, res) => res.render('contact'));
 app.post('/api/contact', async (req, res) => {
     let contact = new contactModel(req.body)
 

@@ -4,91 +4,154 @@
 
 <body>
     <div id="mainDom">
-        <%- include('partials/nav') %>
-        <div class="container-fluid">
-            <transition name="slide">
-                <div v-show="isContent" class="main-content">
-                    <div class="jumbotron">
-                        <div class="main-one">
-                            <p class="lead">Software Enginner</p>
-                            <p class="lead">Developer</p>
-                            <p class="lead">UX/UI Designer</p>
-                            <p class="lead">Freelance</p>
-                        </div>
-                        <div class="main-two">
-                            <h1 class="hello">Hello,<br> I am Ian</h1>
-                            <a class="btn" href="/contact" role="button">Contact</a>
+        <div class="container">
+            <%- include('partials/nav') %>
+            <div class="main-content">
+                <div class="main-one" data-aos="fade-right">
+                    <p class="lead">Software Enginner</p>
+                    <p class="lead">Developer</p>
+                    <p class="lead">UI/UX Designer</p>
+                    <p class="lead">Freelance</p>
+                </div>
+                <div class="main-two" data-aos="fade-left">
+                    <h1 class="hello">Hello,<br> I am Ian</h1>
+                    <a class="btn" href="/contact" role="button">Contact</a>
+                </div>
+            </div>
+            <div class="about-content" data-aos="fade-left">
+                <div class="main-container">
+                    <div class="main-one" data-aos="fade-right">
+                        <img class="img-me" src="/img/iannatividad.jpg" />
+                    </div>
+                    <div class="main-two" data-aos="fade-left">
+                        <p class="name"><strong>Ian Natividad</strong></p>
+                        <p>I am a Software Engineer, developer, and UX/UI designer based in Philippines.
+                            Local and international clients have relied on me for design,
+                            implementation, and management of their digital products.</p>
+                        <p>As a freelancer, I works also with web agencies, companies,
+                            startups and individuals to help them grow their business.</p>
+                        <h3>Skills:</h3>
+                        <div class="skills" data-aos="fade-left">
+                            <ul>
+                                <li>HTML</li>
+                                <li>CSS & HTML Preprocessors</li>
+                                <li>Bootstrap</li>
+                            </ul>
+                            <ul>
+                                <li>CSS</li>
+                                <li>Sass</li>
+                                <li>Scss</li>
+                            </ul>
+                            <ul>
+                                <li>Javascript</li>
+                                <li>JQuery</li>
+                                <li>Vue.js</li>
+                                <li>Node.js</li>
+                                <li>Express</li>
+                                <li>ESLint</li>
+                                <li>NPM</li>
+                            </ul>
+                            <ul>
+                                <li>Wordpress</li>
+                                <li>Accelerated Mobile Pages (AMP)</li>
+                                <li>Shopify</li>
+                            </ul>
+                            <ul>
+                                <li>Progressive Web Apps</li>
+                                <li>GIT</li>
+                                <li>Design thinking</li>
+                                <li>Design sprint</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </transition>
-            <transition name="slide">
-                <div v-show="isAbout" class="about-content">
-                    <div class="main-container">
-                        <div class="main-one">
-                            <img class="img-fluid" src="/img/iannatividad.jpg" />
+            </div>
+            <div class="portfolio-content" data-aos="fade-right">
+                <div class="main-content">
+                    <div class="portfolio-nav">
+                        <ul class="port-nav-list">
+                            <li class="port-nav-item" v-on:click="slideNav('prev')">
+                                <p>&lt;</p>
+                            </li>
+                            <li class="port-nav-item">
+                                <p>{{ portNav }}</p>
+                            </li>
+                            <li class="port-nav-item" v-on:click="slideNav('next')">
+                                <p>&gt;</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-content">
+                        <transition name=slide-fade>
+                            <div v-show="navNum == 0" class="port-one">
+                                <div class="portfolio-link">
+                                    <a href="https://iannator10.github.io/the-burger-house/" target="_blank">The Burger
+                                        House</a>
+                                </div>
+                            </div>
+                        </transition>
+                        <transition name=slide-fade>
+                            <div v-show="navNum == 1" class="port-two">
+                                <div class="portfolio-link">
+                                    <a href="https://iannator10.github.io/cse-reviewer/" target="_blank">CSE
+                                        Reviewer</a>
+                                </div>
+                            </div>
+                        </transition>
+                        <transition name=slide-fade>
+                            <div v-show="navNum == 2" class="port-three">
+                                <p>Not yet available</p>
+                            </div>
+                        </transition>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-content" data-aos="fade-left">
+                <div class="container">
+                    <div class="contact-main-container">
+                        <div class="contact-header">
+                            <h1>{{ title }}</h1>
                         </div>
-                        <div class="main-two">
-                            <p><strong>Ian Natividad</strong></p>
-                            <p>I am a Software Engineer, developer, and UX/UI designer based in Philippines.<br>
-                                Local and international clients have relied on me for design,
-                                implementation, and management of their digital products.</p>
-                            <p>As a freelancer, I works also with web agencies, companies,
-                                startups and individuals to help them grow their business.</p>
-                            <h3>Skills:</h3>
-                            <div class="skills">
-                                <ul>
-                                    <li>HTML</li>
-                                    <li>CSS & HTML Preprocessors</li>
-                                    <li>Bootstrap</li>
-                                </ul>
-                                <ul>
-                                    <li>CSS</li>
-                                    <li>Sass</li>
-                                    <li>Scss</li>
-                                </ul>
-                                <ul>
-                                    <li>Javascript</li>
-                                    <li>JQuery</li>
-                                    <li>Vue.js</li>
-                                    <li>Node.js</li>
-                                    <li>Express</li>
-                                    <li>ESLint</li>
-                                    <li>NPM</li>
-                                </ul>
-                                <ul>
-                                    <li>Wordpress</li>
-                                    <li>Accelerated Mobile Pages (AMP)</li>
-                                    <li>Shopify</li>
-                                </ul>
-                                <ul>
-                                    <li>Progressive Web Apps</li>
-                                    <li>GIT</li>
-                                    <li>Design thinking</li>
-                                    <li>Design sprint</li>
-                                </ul>
+                        <div class="contact-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="emailInput">Email address</label>
+                                    <input type="email" class="form-control" id="emailInput"
+                                        aria-describedby="emailHelp" v-model="email">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                        anyone
+                                        else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subjectInput">Subject</label>
+                                    <input type="text" class="form-control" id="subjectInput" aria-describedby="Subject"
+                                        v-model="subject">
+                                </div>
+                                <div class="form-group">
+                                    <label for="messageInput">Message</label>
+                                    <textarea class="form-control textarea" id="messageInput" rows="6"
+                                        v-model="message"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="contact-footer">
+                            <button type="submit" class="btn btn-primary" v-on:click="submit">Submit</button>
+                            <div v-show="isSubtMessage" class="submit-message">
+                                <p>{{ submitMessage }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </transition>
-            <transition name="slide">
-                <div v-show="isPortfolio" class="portfolio-content">
-                    <div class="main-content">
-                        <div class="portfolio-link">
-                            <a href="https://iannator10.github.io/the-burger-house/" target="_blank">The Burger
-                                House</a>
-                        </div>
-                        <div class="portfolio-link">
-                            <a href="https://iannator10.github.io/cse-reviewer/" target="_blank">CSE Reviewer</a>
-                        </div>
-                    </div>
-                </div>
-            </transition>
+            </div>
         </div>
     </div>
-
     <script src="/js/index.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+        })
+    </script>
 </body>
 
 </html>
