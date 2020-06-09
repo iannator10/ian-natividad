@@ -9,18 +9,18 @@ var mainDom = new Vue({
         isSuccess: null,
         submitMessage: null,
         isSubtMessage: false,
-        portNav: null,
-        navNum: 0,
-        portNavLinks: [
-            'Website',
-            'Web App',
-            'Mobile App'
-        ]
-
+        isMobile: false
     },
     created: function () {
         var self = this;
         self.portNav = self.portNavLinks[0]
+    },
+    mounted() {
+        const self = this;
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            self.isMobile = true;
+        }
     },
     methods: {
         submit: function () {
@@ -63,25 +63,6 @@ var mainDom = new Vue({
                 self.subject = '';
                 self.message = '';
             }, 3000)
-        },
-        slideNav: function (data) {
-            var self = this;
-
-            if (data == 'prev') {
-                if (self.navNum <= 0) {
-                    self.navNum = 0;
-                    self.portNav = self.portNavLinks[0]
-                } else {
-                    self.portNav = self.portNavLinks[self.navNum = self.navNum - 1]
-                }
-            } else if (data == 'next') {
-                if (self.navNum >= 2) {
-                    self.navNum = 2;
-                    self.portNav = self.portNavLinks[2]
-                } else {
-                    self.portNav = self.portNavLinks[self.navNum = self.navNum + 1]
-                }
-            }
         }
     }
 })
